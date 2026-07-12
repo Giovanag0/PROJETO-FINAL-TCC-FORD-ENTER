@@ -1,0 +1,43 @@
+<div class="pagamento-container">
+
+  <!-- SUCESSO -->
+  <div class="sucesso-box" *ngIf="pago">
+    <span class="sucesso-icone">✅</span>
+    <h2>Pagamento Confirmado!</h2>
+    <p>Seu plano <strong>{{ plano }}</strong> foi ativado com sucesso!</p>
+    <button class="btn-voltar" (click)="voltar()">Voltar para Planos</button>
+  </div>
+
+  <!-- FORMULÁRIO -->
+  <div class="pagamento-box" *ngIf="!pago">
+    <h2>💳 Pagamento — Plano {{ plano }}</h2>
+
+    <div class="form-group">
+      <label>Nome no cartão</label>
+      <input type="text" [(ngModel)]="nome" placeholder="Como está no cartão" />
+    </div>
+
+    <div class="form-group">
+      <label>Número do cartão</label>
+      <input type="text" [(ngModel)]="numero" placeholder="0000 0000 0000 0000" maxlength="16" />
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Validade</label>
+        <input type="text" [(ngModel)]="validade" placeholder="MM/AA" maxlength="5" />
+      </div>
+
+      <div class="form-group">
+        <label>CVV</label>
+        <input type="text" [(ngModel)]="cvv" placeholder="000" maxlength="3" />
+      </div>
+    </div>
+
+    <p class="erro" *ngIf="erro">{{ erro }}</p>
+
+    <button class="btn-pagar" (click)="pagar()">Confirmar Pagamento</button>
+    <button class="btn-cancelar" (click)="voltar()">Cancelar</button>
+  </div>
+
+</div>

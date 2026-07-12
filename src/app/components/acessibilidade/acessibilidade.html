@@ -1,0 +1,43 @@
+<!-- BOTÃO DE ACESSIBILIDADE -->
+<button
+  class="botao-acessibilidade"
+  (click)="togglePainel()"
+  aria-label="Abrir opções de acessibilidade"
+  [attr.aria-expanded]="painelAberto">
+  🧍
+</button>
+
+<div class="painel-acessibilidade" *ngIf="painelAberto" role="dialog" aria-label="Opções de acessibilidade">
+  <h4>Acessibilidade</h4>
+
+  <div class="opcao">
+    <span>Tamanho do texto</span>
+    <div class="opcao-botoes">
+      <button (click)="a11y.diminuirFonte()" aria-label="Diminuir texto">A-</button>
+      <button (click)="a11y.resetarFonte()" aria-label="Tamanho padrão">A</button>
+      <button (click)="a11y.aumentarFonte()" aria-label="Aumentar texto">A+</button>
+    </div>
+  </div>
+
+  <div class="opcao">
+    <span>Alto contraste</span>
+    <button
+      class="opcao-toggle"
+      [class.ativo]="a11y.altoContraste"
+      (click)="a11y.toggleContraste()"
+      [attr.aria-pressed]="a11y.altoContraste">
+      {{ a11y.altoContraste ? 'Ativado' : 'Desativado' }}
+    </button>
+  </div>
+
+  <div class="opcao">
+  <span>Tema</span>
+  <button
+    class="opcao-toggle"
+    [class.ativo]="a11y.modoClaro"
+    (click)="a11y.toggleModoClaro()"
+    [attr.aria-pressed]="a11y.modoClaro">
+    {{ a11y.modoClaro ? '☀️ Claro' : '🌙 Escuro' }}
+  </button>
+</div>
+</div>

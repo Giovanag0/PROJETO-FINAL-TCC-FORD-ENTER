@@ -1,0 +1,339 @@
+/* You can add global styles to this file, and also import other style files */
+/* ===== ACESSIBILIDADE (afeta a aplicação inteira, qualquer página) ===== */
+
+/* Alto contraste: preto puro + destaque em amarelo para máxima legibilidade */
+body.alto-contraste {
+  filter: contrast(1.35) saturate(1.1);
+}
+
+body.alto-contraste button,
+body.alto-contraste a {
+  outline: 1px solid #ffcc00;
+}
+
+/* Pausar animações: remove qualquer animação/transição CSS da aplicação */
+body.sem-animacoes,
+body.sem-animacoes *,
+body.sem-animacoes *::before,
+body.sem-animacoes *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+body.modo-claro {
+  background: #f0f0f0 !important;
+  color: #000 !important;
+  filter: invert(0);
+}
+
+body.modo-claro .home-container,
+body.modo-claro .treinos-container,
+body.modo-claro .planos-container,
+body.modo-claro .contato-container,
+body.modo-claro .login-container,
+body.modo-claro .perfil-container,
+body.modo-claro .sobre-container {
+  background: #f0f0f0 !important;
+}
+
+body.modo-claro .navbar {
+  background: #6a83b9 !important;
+}
+
+body.modo-claro .cabecalho {
+  background: #e0e7f5 !important;
+}
+
+body.modo-claro .treino-card,
+body.modo-claro .plano-card,
+body.modo-claro .card,
+body.modo-claro .login-box,
+body.modo-claro .canal-card,
+body.modo-claro .formulario-box,
+body.modo-claro .mapa-box,
+body.modo-claro .perfil-box {
+  background: #ffffff !important;
+  color: #000 !important;
+}
+
+body.modo-claro h1,
+body.modo-claro h2,
+body.modo-claro h3,
+body.modo-claro h4,
+body.modo-claro p,
+body.modo-claro li,
+body.modo-claro label,
+body.modo-claro span {
+  color: #000 !important;
+}
+
+body.modo-claro .nav-links li {
+  color: #000 !important;
+}
+
+body.modo-claro input,
+body.modo-claro textarea {
+  background: #f5f5f5 !important;
+  color: #000 !important;
+  border-color: #0066ff !important;
+}
+
+body.modo-claro .footer,
+body.modo-claro footer {
+  background: #6a83b9 !important;
+  color: #000 !important;
+}
+
+body.modo-claro .perfil-card,
+body.modo-claro .stat-card,
+body.modo-claro .conquista,
+body.modo-claro .conquista-card,
+body.modo-claro .modal,
+body.modo-claro .modal-content,
+body.modo-claro .modal-box,
+body.modo-claro .tab-content,
+body.modo-claro .seguranca-box,
+body.modo-claro .dados-box {
+  background: #ffffff !important;
+  color: #000 !important;
+  border-color: #0066ff !important;
+}
+
+body.modo-claro .conquista span,
+body.modo-claro .conquista p,
+body.modo-claro .conquista-card span,
+body.modo-claro .conquista-card p,
+body.modo-claro .stat-card span,
+body.modo-claro .stat-card p {
+  color: #000 !important;
+}
+
+body.modo-claro .btn-tab,
+body.modo-claro .tab-btn {
+  background: #e0e0e0 !important;
+  color: #000 !important;
+  border-color: #0066ff !important;
+}
+
+body.modo-claro .btn-tab.ativo,
+body.modo-claro .tab-btn.ativo {
+  background: #0066ff !important;
+  color: #fff !important;
+}
+
+body.modo-claro .engrenagem,
+body.modo-claro .btn-engrenagem,
+body.modo-claro .config-btn {
+  background: #e0e0e0 !important;
+  color: #000 !important;
+  border-color: #0066ff !important;
+}
+
+body.modo-claro .card-resumo {
+  background: #ffffff !important;
+  border-color: #0066ff !important;
+  color: #000 !important;
+}
+
+body.modo-claro .card-resumo h3,
+body.modo-claro .card-resumo p,
+body.modo-claro .card-resumo .unidade {
+  color: #000 !important;
+}
+
+body.modo-claro .cabecalho {
+  background: #dde3f0 !important;
+}
+
+body.modo-claro .conteudo {
+  background: #f0f0f0 !important;
+}
+
+body.modo-claro .card-perfil {
+  background: #ffffff !important;
+  color: #000 !important;
+}
+
+body.modo-claro .card-perfil h2,
+body.modo-claro .form-group label {
+  color: #0066ff !important;
+}
+
+body.modo-claro .form-control {
+  background: #f5f5f5 !important;
+  color: #000 !important;
+  border-color: #0066ff !important;
+}
+
+body.modo-claro .badge-conquista {
+  background: #ffffff !important;
+  color: #000 !important;
+}
+
+body.modo-claro .badge-titulo {
+  color: #000 !important;
+}
+
+body.modo-claro .modal-config {
+  background: #ffffff !important;
+  color: #000 !important;
+  border-color: #0066ff !important;
+}
+
+body.modo-claro .modal-aba-btn {
+  background: #e0e0e0 !important;
+  color: #000 !important;
+  border-color: #0066ff !important;
+}
+
+body.modo-claro .modal-aba-btn.ativa {
+  background: #0066ff !important;
+  color: #fff !important;
+}
+
+body.modo-claro .modal-fechar {
+  background: #e0e0e0 !important;
+  color: #000 !important;
+}
+
+body.modo-claro .btn-config {
+  background: #e0e0e0 !important;
+  color: #000 !important;
+  border-color: #0066ff !important;
+}
+
+body.modo-claro .item-exercicio {
+  background: #f0f0f0 !important;
+  color: #000 !important;
+}
+
+body.modo-claro .checkbox-exercicio span:last-child {
+  color: #000 !important;
+}
+
+body.modo-claro .secao-conquistas {
+  background: #f0f0f0 !important;
+}
+
+body.modo-claro .secao-aluno {
+  background: #f0f0f0 !important;
+}
+
+body.modo-claro .dia-calendario {
+  background: #e0e0e0 !important;
+  color: #000 !important;
+}
+
+body.modo-claro .dia-calendario.presente {
+  background: linear-gradient(135deg, #0066ff, #66ccff) !important;
+  color: #fff !important;
+  border-color: #66ccff !important;
+}
+
+body.modo-claro .dia-calendario.hoje {
+  border: 2px solid #00aa55 !important;
+  box-shadow: 0 0 10px rgba(0, 170, 85, 0.6) !important;
+  color: #000 !important;
+}
+
+body.modo-claro .secao {
+  background: #e5e5fa!important;
+}
+
+body.modo-claro .progresso-texto strong {
+  color: #000 !important;
+}
+
+body.modo-claro .progresso-texto span {
+  color: #000 !important;
+}
+
+body.modo-claro .progresso-fundo {
+  stroke: #e0e0e0 !important;
+}
+
+body.modo-claro .banner-completo p {
+  color: #000000 !important;
+}
+
+body.modo-claro .painel-acessibilidade {
+  background: #ffffff !important;
+  border-color: #0066ff !important;
+}
+
+body.modo-claro .painel-acessibilidade h4 {
+  color: #0066ff !important;
+}
+
+body.modo-claro .painel-acessibilidade .opcao span {
+  color: #000 !important;
+}
+
+body.modo-claro .opcao-botoes button {
+  background: #e0e0e0 !important;
+  color: #000 !important;
+  border-color: #0066ff !important;
+}
+
+body.modo-claro .opcao-toggle {
+  background: #e0e0e0 !important;
+  color: #000 !important;
+  border-color: #0066ff !important;
+}
+
+body.modo-claro .opcao-toggle.ativo {
+  background: #0066ff !important;
+  color: #fff !important;
+}
+
+body:not(.modo-claro) .plano-card {
+  background: #0d0d1a !important;
+  color: #fff !important;
+}
+
+body:not(.modo-claro) .planos-container {
+  background: #000 !important;
+}
+
+body:not(.modo-claro) .planos-container .cabecalho {
+  background: #0a0a1a !important;
+}
+
+body.modo-claro .faq-item {
+  background: #ffffff !important;
+  border-color: #0066ff !important;
+}
+
+body.modo-claro .faq-pergunta {
+  color: #000 !important;
+}
+
+body.modo-claro .faq-resposta p {
+  color: #333 !important;
+}
+
+body.modo-claro .faq-icone {
+  color: #0066ff !important;
+}
+
+body.modo-claro .cta {
+  background: #dde3f0 !important;
+}
+
+body.modo-claro .cta h2,
+body.modo-claro .cta p {
+  color: #000 !important;
+}
+
+body.modo-claro .galeria {
+  background: #f0f0f0 !important;
+}
+
+body.modo-claro .foto-card {
+  background: #ffffff !important;
+}
+
+body.modo-claro .foto-card p {
+  color: #000 !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+}

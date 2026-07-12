@@ -1,0 +1,305 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.login-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.login-box {
+  background: #000000;
+  border: 1px solid #2f00ff;
+  border-radius: 12px;
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 0 30px rgba(104, 16, 247, 0.2);
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo h1 {
+  color: #8400ff;
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.logo p {
+  color: #fdfdfd;
+  font-size: 0.9rem;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  color: #ffffff;
+  margin-bottom: 6px;
+  font-size: 1.0rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 15px;
+  background: #333;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.btn-principal {
+  width: 100%;
+  padding: 13px;
+  background: #8c00ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.3s;
+}
+
+.btn-principal:hover {
+  background: #6b2786;
+}
+
+.alternar {
+  text-align: center;
+  color: #ffffff;
+  margin-top: 16px;
+  font-size: 0.9rem;
+}
+
+.alternar span {
+  color: #4447e2;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.alternar span:hover {
+  text-decoration: underline;
+}
+
+.erro {
+  color: #ff4444;
+  text-align: center;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+.logo-img {
+  width: 180px;
+  margin-bottom: 10px;
+}
+
+.logo-navbar {
+  height: 60px;
+}
+
+.sair {
+  color: #ff4444 !important;
+}
+
+.termos-group {
+  margin-top: 4px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #ffffff;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+  margin-top: 3px;
+  accent-color: #8c00ff;
+  cursor: pointer;
+}
+
+.checkbox-label a {
+  color: #a56bff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.checkbox-label a:hover {
+  color: #c39bff;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background: #000000;
+  border: 1px solid #2f00ff;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 520px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 0 30px rgba(104, 16, 247, 0.3);
+}
+
+.modal-box h2 {
+  color: #8400ff;
+  margin-bottom: 16px;
+}
+
+.modal-texto p {
+  color: #dddddd;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.modal-fechar {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-fechar:hover {
+  color: #a56bff;
+}
+
+.campo-senha {
+  position: relative;
+}
+
+.campo-senha input {
+  padding-right: 44px;
+}
+
+.icone-olho {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.1rem;
+  user-select: none;
+}
+
+.dica-senha {
+  color: #bbb;
+  font-size: 0.8rem;
+  margin: 6px 0 16px;
+}
+
+/* ===== POP-UP: USUÁRIO NÃO CADASTRADO ===== */
+.aviso-box {
+  text-align: center;
+  max-width: 380px;
+}
+
+.aviso-icone {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
+.aviso-box h2 {
+  margin-bottom: 12px;
+}
+
+.aviso-texto {
+  color: #dddddd;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.btn-secundario {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid #555;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.btn-secundario:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #888;
+}
+
+.link-sobre-nos {
+  text-align: center;
+  color: #8400ff;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: color 0.3s;
+}
+
+.link-sobre-nos:hover {
+  color: #a56bff;
+  text-decoration: underline;
+}
+
+/* ========== RESPONSIVIDADE ========== */
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 16px;
+  }
+
+  .login-box {
+    padding: 26px 22px;
+  }
+
+  .logo-img {
+    width: 140px;
+  }
+
+  .logo h1 {
+    font-size: 1.35rem;
+  }
+
+  .modal-box {
+    padding: 22px;
+    width: 92%;
+  }
+}

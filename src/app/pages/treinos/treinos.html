@@ -1,0 +1,64 @@
+<div class="treinos-container">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <img src="imgs/Logo_Academia.png" alt="Logo" class="logo-navbar" />
+    <ul class="nav-links">
+      <li (click)="navegarPara('/home')">Home</li>
+      <li (click)="navegarPara('/treinos')">Treinos</li>
+      <li (click)="navegarPara('/planos')">Planos</li>
+      <li (click)="navegarPara('/contato')">Contato</li>
+      <li (click)="navegarPara('/perfil')">Perfil</li>
+      <li class="sair" (click)="navegarPara('/login')">Sair</li>
+    </ul>
+  </nav>
+
+  <!-- CABEÇALHO -->
+  <div class="cabecalho">
+    <h1>Nossos Treinos</h1>
+    <p>Escolha a modalidade e comece a se movimentar</p>
+  </div>
+
+  <!-- FILTROS -->
+  <div class="filtros">
+    <button
+      *ngFor="let categoria of categorias"
+      class="filtro-btn"
+      [class.ativo]="filtroAtivo === categoria"
+      (click)="filtrar(categoria)">
+      <span class="filtro-icone">{{ iconeCategoria(categoria) }}</span>
+      {{ categoria }}
+    </button>
+  </div>
+
+  <!-- CARROSSEL DE TREINOS (controlado pelo usuário) -->
+  <div class="carrossel-treinos">
+    <button class="seta seta-esq" (click)="rolar('esquerda')">&#10094;</button>
+
+    <div class="trilho-wrapper">
+      <div class="trilho" #trilho>
+        <div
+          class="treino-card"
+          [attr.data-categoria]="treino.categoria"
+          *ngFor="let treino of treinosFiltrados()">
+
+          <div class="treino-icone">
+            <span class="treino-emoji">{{ treino.emoji }}</span>
+          </div>
+          <h3>{{ treino.nome }}</h3>
+          <p class="treino-categoria">{{ treino.categoria }}</p>
+
+          <div class="treino-info">
+            <span>🕒 {{ treino.horario }}</span>
+          </div>
+        </div>
+
+        <p class="sem-resultado" *ngIf="treinosFiltrados().length === 0">
+          Nenhum treino encontrado nessa categoria.
+        </p>
+      </div>
+    </div>
+
+    <button class="seta seta-dir" (click)="rolar('direita')">&#10095;</button>
+  </div>
+</div>

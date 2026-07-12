@@ -1,0 +1,127 @@
+<div class="login-container">
+  <div class="login-box">
+
+    <div class="logo">
+      <img src="imgs/Logo_Academia_.png" alt="Gusmão Fitness" class="logo-img"/>
+      <p>Sua jornada começa aqui</p>
+       <p class="link-sobre-nos" (click)="navegarPara('/sobre-nos')">&larr; Conheça a academia</p>
+    </div>
+
+    <!-- FORMULÁRIO DE LOGIN -->
+    <div *ngIf="!isCadastro">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" [(ngModel)]="email" placeholder="Digite seu email" />
+      </div>
+     <div class="form-group">
+  <label>Senha</label>
+  <div class="campo-senha">
+    <input [type]="mostrarSenha ? 'text' : 'password'" [(ngModel)]="senha" placeholder="Sua senha" />
+    <span class="icone-olho" (click)="alternarMostrarSenha()">{{ mostrarSenha ? '🙈' : '👁️' }}</span>
+  </div>
+</div>
+      
+      <p class="erro" *ngIf="erro">{{ erro }}</p>
+      <button class="btn-principal" (click)="entrar()">Entrar</button>
+
+      <p class="alternar">
+        Não tem conta?
+        <span (click)="alternarModo()">Cadastre-se</span>
+      </p>
+    </div>
+
+    <!-- FORMULÁRIO DE CADASTRO -->
+    <div *ngIf="isCadastro">
+      <div class="form-group">
+        <label>Nome</label>
+        <input type="text" [(ngModel)]="nome" placeholder="Nome completo" />
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" [(ngModel)]="email" placeholder="Digite seu email" />
+      </div>
+
+      <div class="form-group">
+  <label>Senha</label>
+  <div class="campo-senha">
+    <input [type]="mostrarSenha ? 'text' : 'password'" [(ngModel)]="senha" placeholder="Crie uma senha" />
+    <span class="icone-olho" (click)="alternarMostrarSenha()">{{ mostrarSenha ? '🙈' : '👁️' }}</span>
+  </div>
+  <p class="dica-senha">A senha pode ser letra, número ou uma combinação dos dois.</p>
+</div>
+
+      <div class="form-group termos-group">
+        <label class="checkbox-label">
+          <input type="checkbox" [(ngModel)]="aceitouTermos" required/>
+          <span>
+            Li e aceito os
+            <a href="#" (click)="abrirModal('termos', $event)">Termos de Uso</a>
+            e a
+            <a href="#" (click)="abrirModal('privacidade', $event)">Política de Privacidade</a>
+          </span>
+        </label>
+      </div>
+
+      <p class="erro" *ngIf="erro">{{ erro }}</p>
+      <button class="btn-principal" (click)="cadastrar()">Cadastrar</button>
+
+      <p class="alternar">
+        Já tem conta?
+        <span (click)="alternarModo()">Fazer login</span>
+      </p>
+    </div>
+
+    <!-- POP-UP: USUÁRIO NÃO CADASTRADO -->
+    <div class="modal-overlay" *ngIf="avisoLoginAberto" (click)="fecharAvisoLogin()">
+      <div class="modal-box aviso-box" (click)="$event.stopPropagation()">
+        <button class="modal-fechar" (click)="fecharAvisoLogin()">×</button>
+        <div class="aviso-icone">⚠️</div>
+        <h2>Cadastro não encontrado</h2>
+        <p class="aviso-texto">
+          Não encontramos nenhuma conta com este email. Você precisa se cadastrar antes de fazer login.
+        </p>
+        <button class="btn-principal" (click)="irParaCadastroPeloAviso()">Criar minha conta</button>
+        <button class="btn-secundario" (click)="fecharAvisoLogin()">Fechar</button>
+      </div>
+    </div>
+
+    <!-- MODAL DE TERMOS / PRIVACIDADE -->
+    <div class="modal-overlay" *ngIf="modalAberto" (click)="fecharModal()">
+      <div class="modal-box" (click)="$event.stopPropagation()">
+        <button class="modal-fechar" (click)="fecharModal()">×</button>
+
+        <ng-container *ngIf="modalAberto === 'termos'">
+          <h2>Termos de Uso</h2>
+          <div class="modal-texto">
+            <p>Ao utilizar o site Gusmão Fitness, você concorda com os termos abaixo.</p>
+            <p><strong>1. Uso do serviço</strong><br>
+            O aplicativo oferece treinos, planos e conteúdos relacionados à atividade física. O uso é de responsabilidade do usuário, que deve avaliar suas condições de saúde antes de iniciar qualquer atividade.</p>
+            <p><strong>2. Cadastro</strong><br>
+            As informações fornecidas no cadastro devem ser verdadeiras. O usuário é responsável por manter a confidencialidade de sua senha.</p>
+            <p><strong>3. Responsabilidades</strong><br>
+            A Gusmão Fitness não se responsabiliza por lesões ou problemas de saúde decorrentes da execução dos treinos sem acompanhamento profissional adequado.</p>
+            <p><strong>4. Alterações</strong><br>
+            Estes termos podem ser atualizados a qualquer momento, sendo publicada a versão vigente dentro do aplicativo.</p>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="modalAberto === 'privacidade'">
+          <h2>Política de Privacidade</h2>
+          <div class="modal-texto">
+            <p>Esta política explica como coletamos, usamos e protegemos os seus dados.</p>
+            <p><strong>1. Dados coletados</strong><br>
+            Coletamos nome, e-mail e senha no momento do cadastro, além de dados de uso do aplicativo (treinos realizados, planos escolhidos).</p>
+            <p><strong>2. Finalidade</strong><br>
+            Os dados são usados para autenticação, personalização de treinos e melhoria da experiência no aplicativo.</p>
+            <p><strong>3. Compartilhamento</strong><br>
+            Não compartilhamos seus dados com terceiros, exceto quando exigido por lei.</p>
+            <p><strong>4. Direitos do usuário</strong><br>
+            Você pode solicitar a exclusão ou correção dos seus dados a qualquer momento, entrando em contato pela página de Contato do aplicativo.</p>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+  </div>
+</div>

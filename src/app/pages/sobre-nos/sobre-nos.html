@@ -1,0 +1,53 @@
+<div class="sobre-container">
+
+  <!-- BARRA SUPERIOR -->
+  <nav class="topbar">
+    <img src="imgs/Logo_Academia.png" alt="Logo" class="logo-topbar" />
+    <button class="btn-entrar" (click)="navegarPara('/login')">Entrar</button>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <h1>Quem Somos</h1>
+    <p class="hero-texto">
+      Nascemos com o propósito de transformar vidas através do movimento.
+      A Gusmão Fitness combina ciência do esporte, equipamentos de última
+      geração e um ambiente focado na disciplina. Aqui, cada treino é
+      planejado para que você atinja o seu ápice, seja você um iniciante
+      ou um atleta de alto rendimento.
+    </p>
+  </header>
+
+  <!-- GALERIA DE FOTOS DA ACADEMIA -->
+  <section class="galeria">
+    <div
+      class="foto-card"
+      *ngFor="let foto of fotos; let i = index"
+      [style.transition-delay.ms]="i * 120">
+      <img [src]="foto.url" [alt]="foto.legenda" loading="lazy" />
+      <p>{{ foto.legenda }}</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2 class="faq-titulo">Perguntas Frequentes</h2>
+    <div class="faq-item" *ngFor="let item of faqs" (click)="toggleFaq(item)">
+      <div class="faq-pergunta">
+        <span>{{ item.pergunta }}</span>
+        <span class="faq-icone">{{ item.aberto ? '−' : '+' }}</span>
+      </div>
+      <div class="faq-resposta" *ngIf="item.aberto">
+        <p>{{ item.resposta }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAMADA FINAL -->
+  <section class="cta reveal">
+    <h2>Pronto para começar sua transformação?</h2>
+    <p>Entre na sua conta ou cadastre-se para acessar treinos, planos e muito mais.</p>
+    <button class="btn-cta" (click)="navegarPara('/login')">Fazer Login</button>
+  </section>
+
+</div>

@@ -1,0 +1,81 @@
+<div class="contato-container">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <img src="imgs/Logo_Academia.png" alt="Logo" class="logo-navbar" />
+    <ul class="nav-links">
+      <li (click)="navegarPara('/home')">Home</li>
+      <li (click)="navegarPara('/treinos')">Treinos</li>
+      <li (click)="navegarPara('/planos')">Planos</li>
+      <li (click)="navegarPara('/contato')">Contato</li>
+      <li (click)="navegarPara('/perfil')">Perfil</li>
+      <li class="sair" (click)="navegarPara('/login')">Sair</li>
+    </ul>
+  </nav>
+
+  <!-- CABEÇALHO -->
+  <div class="cabecalho">
+    <h1>Fale Conosco</h1>
+    <p>Estamos prontos para te ajudar a começar sua jornada</p>
+  </div>
+
+  <!-- CARDS DE CONTATO -->
+  <div class="canais-grid">
+    <a
+      class="canal-card"
+      *ngFor="let canal of canais"
+      [href]="canal.link"
+      target="_blank"
+      rel="noopener">
+      <span class="canal-icone">{{ canal.icone }}</span>
+      <h3>{{ canal.nome }}</h3>
+      <p>{{ canal.informacao }}</p>
+    </a>
+  </div>
+
+  <!-- FORMULÁRIO + MAPA -->
+  <div class="secao-inferior">
+
+    <!-- FORMULÁRIO -->
+    <div class="formulario-box">
+      <h2>Envie uma mensagem</h2>
+
+      <div class="form-group">
+        <label>Nome</label>
+        <input type="text" [(ngModel)]="nome" placeholder="Seu nome completo" />
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" [(ngModel)]="email" placeholder="Seu melhor email" />
+      </div>
+
+      <div class="form-group">
+        <label>Mensagem</label>
+        <textarea rows="5" [(ngModel)]="mensagem" placeholder="Escreva sua mensagem..."></textarea>
+      </div>
+
+      <p class="erro" *ngIf="erro">{{ erro }}</p>
+      <p class="sucesso" *ngIf="enviado">Mensagem enviada com sucesso! Em breve entraremos em contato.</p>
+
+      <button class="btn-enviar" (click)="enviarMensagem()">Enviar mensagem</button>
+    </div>
+
+    <!-- MAPA / ENDEREÇO -->
+    <div class="mapa-box">
+      <h2>Onde estamos</h2>
+      <p class="endereco">📍 {{ endereco }}</p>
+
+      <div class="mapa-frame">
+        <iframe
+          [src]="mapaUrl"
+          allowfullscreen="true"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+
+  </div>
+
+</div>

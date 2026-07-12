@@ -1,0 +1,159 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.botao-acessibilidade {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #0066ff;
+  color: #fff;
+  border: 2px solid #66ccff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  z-index: 2000;
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.55);
+  transition: transform 0.25s ease, background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.botao-acessibilidade:hover {
+  transform: scale(1.08);
+  background: #0052cc;
+}
+
+.painel-acessibilidade {
+  position: fixed;
+  bottom: 92px;
+  right: 24px;
+  width: 260px;
+  background: #0a0a2e;
+  border: 1px solid #0066ff;
+  border-radius: 14px;
+  padding: 18px 20px;
+  z-index: 2000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.painel-acessibilidade h4 {
+  color: #66ccff;
+  font-size: 1.1rem;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.opcao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(0, 102, 255, 0.25);
+}
+
+.opcao:last-child {
+  border-bottom: none;
+}
+
+.opcao span {
+  color: #dcdcdc;
+  font-size: 0.9rem;
+}
+
+.opcao-botoes {
+  display: flex;
+  gap: 6px;
+}
+
+.opcao-botoes button {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid #0066ff;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.3s;
+}
+
+.opcao-botoes button:hover {
+  background: rgba(0, 102, 255, 0.3);
+}
+
+.opcao-toggle {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #0066ff;
+  background: transparent;
+  color: #bebebe;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.opcao-toggle.ativo {
+  background: #0066ff;
+  color: #fff;
+  font-weight: bold;
+}
+body.modo-claro {
+  background: #f0f0f0 !important;
+  color: #000 !important;
+}
+
+body.modo-claro nav,
+body.modo-claro .navbar {
+  background: #e0e0e0 !important;
+  border-color: #0066ff !important;
+}
+
+body.modo-claro .login-box,
+body.modo-claro .card,
+body.modo-claro .plano-card,
+body.modo-claro .painel-acessibilidade {
+  background: #ffffff !important;
+  color: #000 !important;
+  border-color: #0066ff !important;
+}
+
+body.modo-claro h1,
+body.modo-claro h2,
+body.modo-claro h3,
+body.modo-claro p,
+body.modo-claro li,
+body.modo-claro label {
+  color: #000 !important;
+}
+
+body.modo-claro .home-container,
+body.modo-claro .treinos-container,
+body.modo-claro .planos-container,
+body.modo-claro .contato-container {
+  background: #f0f0f0 !important;
+}
+
+/* ========== RESPONSIVIDADE ========== */
+
+@media (max-width: 480px) {
+  .botao-acessibilidade {
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .painel-acessibilidade {
+    bottom: 76px;
+    right: 16px;
+    width: calc(100vw - 32px);
+    padding: 16px 18px;
+  }
+}

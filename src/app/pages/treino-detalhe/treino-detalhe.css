@@ -1,0 +1,367 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.detalhe-container {
+  background: #000;
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  background: #0a0a2e;
+  border-bottom: 2px solid #0066ff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li {
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.nav-links li:hover {
+  color: #0066ff;
+}
+
+.logo-navbar {
+  height: 110px;
+}
+
+.sair {
+  color: #ffffff !important;
+}
+
+.sair:hover {
+  color: #0066ff !important;
+}
+
+/* CABEÇALHO DO TREINO */
+.cabecalho-detalhe {
+  text-align: center;
+  padding: 40px 20px 30px;
+  background:
+    radial-gradient(ellipse 60% 100% at 20% 0%, rgba(0, 102, 255, 0.18), transparent 60%),
+    radial-gradient(ellipse 60% 100% at 80% 100%, rgba(0, 102, 255, 0.12), transparent 60%),
+    #0a0a1a;
+  position: relative;
+}
+
+.voltar-btn {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: rgba(0, 102, 255, 0.15);
+  border: 1px solid #0066ff;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.voltar-btn:hover {
+  background: #0066ff;
+}
+
+.emoji-grande {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.cabecalho-detalhe h1 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #3399ff, #66ccff, #0066ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.categoria-badge {
+  display: inline-block;
+  color: #9fc4ff;
+  background: rgba(0, 102, 255, 0.15);
+  border: 1px solid rgba(0, 102, 255, 0.4);
+  padding: 5px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  margin-bottom: 18px;
+}
+
+.aviso-remoto {
+  max-width: 560px;
+  margin: 0 auto;
+  color: #bebebe;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* ABAS DE NÍVEL */
+.abas-nivel {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  padding: 30px 20px;
+  background: #0a0a1a;
+  flex-wrap: wrap;
+}
+
+.aba-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #0066ff;
+  color: #fff;
+  padding: 10px 26px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.25s, background 0.3s, box-shadow 0.3s;
+}
+
+.aba-btn:hover {
+  background: rgba(0, 102, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.aba-btn.ativa {
+  background: linear-gradient(135deg, #0066ff, #3399ff);
+  font-weight: bold;
+  border-color: #66ccff;
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.55);
+  transform: translateY(-2px);
+}
+
+/* GRID DE EXERCÍCIOS */
+.exercicios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 26px;
+  padding: 30px 60px 70px;
+  background: #000;
+}
+
+.exercicio-card {
+  background: linear-gradient(160deg, rgba(20, 24, 46, 0.9), rgba(8, 10, 24, 0.95));
+  border: 1px solid rgba(0, 102, 255, 0.4);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.exercicio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 34px rgba(0, 102, 255, 0.35);
+  border-color: #66ccff;
+}
+
+.exercicio-midia {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.exercicio-midia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.midia-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.exercicio-midia:hover .midia-overlay {
+  opacity: 1;
+}
+
+.midia-pendente {
+  cursor: default;
+  font-size: 0.85rem;
+  color: #cfcfcf;
+}
+
+.exercicio-info {
+  padding: 18px 20px 22px;
+}
+
+.exercicio-info h3 {
+  color: #fff;
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+
+.exercicio-info p {
+  color: #bebebe;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* NÃO ENCONTRADO */
+.nao-encontrado {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nao-encontrado button {
+  background: #0066ff;
+  border: none;
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+/* GRUPOS DE TREINO (TREINO A / B / C / D) */
+.grupo-treino {
+  padding: 0 40px 10px;
+}
+
+.grupo-titulo {
+  color: #3399ff;
+  font-size: 1.3rem;
+  margin: 30px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 102, 255, 0.3);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 14px 24px;
+  }
+
+  .nav-links {
+    gap: 18px;
+  }
+
+  .logo-navbar {
+    height: 80px;
+  }
+
+  .exercicios-grid {
+    padding: 26px 30px 60px;
+  }
+
+  .grupo-treino {
+    padding: 0 24px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    font-size: 0.95rem;
+  }
+
+  .logo-navbar {
+    height: 60px;
+  }
+
+  .voltar-btn {
+    position: static;
+    margin-bottom: 16px;
+  }
+
+  .cabecalho-detalhe h1 {
+    font-size: 1.6rem;
+  }
+
+  .emoji-grande {
+    font-size: 2.4rem;
+  }
+
+  .abas-nivel {
+    padding: 24px 16px;
+    gap: 10px;
+  }
+
+  .aba-btn {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+
+  .exercicios-grid {
+    grid-template-columns: 1fr;
+    padding: 20px 16px 50px;
+    gap: 18px;
+  }
+
+  .grupo-treino {
+    padding: 0 16px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    gap: 10px;
+    font-size: 0.85rem;
+  }
+
+  .logo-navbar {
+    height: 48px;
+  }
+
+  .cabecalho-detalhe h1 {
+    font-size: 1.35rem;
+  }
+
+  .aviso-remoto {
+    font-size: 0.8rem;
+  }
+
+  .aba-btn {
+    padding: 7px 16px;
+    font-size: 0.85rem;
+  }
+
+  .grupo-titulo {
+    font-size: 1.1rem;
+  }
+}

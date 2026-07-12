@@ -1,0 +1,48 @@
+<div class="planos-container">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <img src="imgs/Logo_Academia.png" alt="Logo" class="logo-navbar" />
+    <ul class="nav-links">
+      <li (click)="navegarPara('/home')">Home</li>
+      <li (click)="navegarPara('/treinos')">Treinos</li>
+      <li (click)="navegarPara('/planos')">Planos</li>
+      <li (click)="navegarPara('/contato')">Contato</li>
+      <li (click)="navegarPara('/perfil')">Perfil</li>
+      <li class="sair" (click)="navegarPara('/login')">Sair</li>
+    </ul>
+  </nav>
+
+  <!-- CABEÇALHO -->
+  <div class="cabecalho">
+    <h1>Nossos Planos</h1>
+    <p>Escolha o plano ideal para o seu objetivo</p>
+  </div>
+
+  <!-- PLANOS -->
+  <div class="planos-grid">
+    <div
+      class="plano-card"
+      *ngFor="let plano of planos"
+      [class.destaque]="plano.destaque">
+
+      <span class="plano-badge" *ngIf="plano.badge">{{ plano.badge }}</span>
+
+      <h3>{{ plano.nome }}</h3>
+      <p class="plano-descricao">{{ plano.descricao }}</p>
+
+      <p class="plano-preco">
+        R$ {{ plano.preco }}<span>/mês</span>
+      </p>
+
+      <ul class="plano-beneficios">
+        <li *ngFor="let beneficio of plano.beneficios">
+          <span class="check">✓</span> {{ beneficio }}
+        </li>
+      </ul>
+
+      <button class="plano-btn" (click)="assinar(plano)">Assinar {{ plano.nome }}</button>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,255 @@
+<div class="perfil-container">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <img src="imgs/Logo_Academia.png" alt="Logo" class="logo-navbar" />
+    <ul class="nav-links">
+      <li (click)="navegarPara('/home')">Home</li>
+      <li (click)="navegarPara('/treinos')">Treinos</li>
+      <li (click)="navegarPara('/planos')">Planos</li>
+      <li (click)="navegarPara('/contato')">Contato</li>
+      <li (click)="navegarPara('/perfil')">Perfil</li>
+      <li class="sair" (click)="sair()">Sair</li>
+    </ul>
+  </nav>
+
+  <!-- CABEÇALHO -->
+  <div class="cabecalho">
+    <button class="btn-config" (click)="abrirModal('dados')" title="Configurações da conta">⚙️</button>
+
+    <div class="avatar">{{ (usuarioLogado?.nome || '?').charAt(0).toUpperCase() }}</div>
+    <h1>Minha Conta</h1>
+    <p>Olá, <strong>{{ usuarioLogado?.nome }}</strong>! Aqui está o seu progresso.</p>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="dashboard-resumo">
+
+    <div class="card-resumo">
+      <span class="icone">📅</span>
+      <h3>Frequência</h3>
+      <p>{{ diasPresentes.length }} <span class="unidade">dias este mês</span></p>
+    </div>
+
+    <div class="card-resumo card-resumo-treino">
+      <span class="icone">🏋️</span>
+      <h3>Treino de Hoje</h3>
+      <p>{{ treinoHoje?.nome || 'Nenhum selecionado' }}</p>
+    </div>
+
+    <div class="card-resumo card-resumo-anel">
+      <div class="progresso-anel-wrap">
+        <svg class="progresso-svg" viewBox="0 0 100 100">
+          <circle class="progresso-fundo" cx="50" cy="50" r="42"></circle>
+          <circle
+            class="progresso-preenchido"
+            cx="50" cy="50" r="42"
+            [style.strokeDasharray]="264"
+            [style.strokeDashoffset]="264 - (264 * progressoPercentual() / 100)">
+          </circle>
+        </svg>
+        <div class="progresso-texto">
+          <strong>{{ totalFeitos() }}/{{ exerciciosHoje.length }}</strong>
+          <span>exercícios</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-resumo card-resumo-conquistas" (click)="irParaConquistas()">
+      <span class="icone">🏆</span>
+      <h3>Conquistas</h3>
+      <p>{{ totalConquistasDesbloqueadas() }} <span class="unidade">de {{ conquistas().length }}</span></p>
+    </div>
+
+  </div>
+
+  <!-- BANNER DE TREINO COMPLETO -->
+  <div class="banner-completo" *ngIf="treinoCompleto()">
+    <span class="banner-emoji">🎉</span>
+    <div>
+      <strong>Treino de hoje concluído!</strong>
+      <p>Todos os exercícios marcados. Mandou bem!</p>
+    </div>
+  </div>
+
+  <!-- CONQUISTAS -->
+  <div class="secao-conquistas">
+    <h2 class="secao-titulo-aluno">Conquistas</h2>
+    <div class="lista-conquistas">
+      <div
+        class="badge-conquista"
+        *ngFor="let c of conquistas()"
+        [class.desbloqueada]="c.desbloqueada"
+        [title]="c.descricao">
+        <span class="badge-icone">{{ c.icone }}</span>
+        <span class="badge-titulo">{{ c.titulo }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ÁREA DO ALUNO INTERATIVA -->
+  <div class="secao-aluno" *ngIf="usuarioLogado">
+    <h2 class="secao-titulo-aluno">Área do Aluno</h2>
+
+    <div class="conteudo">
+
+      <!-- TREINO DE HOJE -->
+      <div class="card-perfil card-treino-dia" *ngIf="treinoHoje">
+        <h2>{{ treinoHoje.emoji }} Treino de Hoje — {{ treinoHoje.nome }}</h2>
+
+        <div class="selecao-treino">
+          <label>Qual treino você vai fazer/fez hoje?</label>
+          <select
+            class="form-control"
+            (change)="selecionarTreino($any($event.target).value)">
+            <option
+              *ngFor="let t of treinosDisponiveis"
+              [value]="t.id"
+              [selected]="t.id === treinoSelecionadoId">
+              {{ t.emoji }} {{ t.nome }}
+            </option>
+          </select>
+        </div>
+
+        <p class="subtitulo-treino">{{ totalFeitos() }} de {{ exerciciosHoje.length }} exercícios concluídos</p>
+
+        <div class="barra-progresso">
+          <div
+            class="barra-progresso-preenchida"
+            [style.width.%]="progressoPercentual()">
+          </div>
+        </div>
+
+        <div class="lista-exercicios">
+          <div class="item-exercicio" *ngFor="let ex of exerciciosHoje" [class.concluido]="isFeito(ex.nome)">
+            <label class="checkbox-exercicio">
+              <input type="checkbox" [checked]="isFeito(ex.nome)" (change)="toggleExercicio(ex.nome)" />
+              <span class="checkbox-visual">
+                <span class="checkbox-check">✓</span>
+              </span>
+              <span>{{ ex.nome }}</span>
+            </label>
+            <input
+              type="text"
+              class="input-carga"
+              placeholder="Carga (ex: 20kg)"
+              [value]="cargaDe(ex.nome)"
+              (change)="atualizarCarga(ex.nome, $any($event.target).value)" />
+          </div>
+        </div>
+      </div>
+
+      <!-- FREQUÊNCIA DO MÊS -->
+      <div class="card-perfil card-frequencia">
+        <h2>📅 Frequência — {{ nomeMesAtual }}</h2>
+        <p class="contador-frequencia">
+          Você foi <strong>{{ diasPresentes.length }}</strong>
+          {{ diasPresentes.length === 1 ? 'dia' : 'dias' }} esse mês 🔥
+        </p>
+
+        <div class="grade-calendario">
+          <div
+            class="dia-calendario"
+            *ngFor="let dia of diasNoMes"
+            [class.presente]="diasPresentes.includes(dia)"
+            [class.hoje]="dia === diaHoje"
+            [title]="dia === diaHoje ? 'Hoje' : (diasPresentes.includes(dia) ? 'Presença registrada' : '')">
+            {{ dia }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- MODAL DE CONFIGURAÇÕES -->
+<div class="modal-overlay" *ngIf="modalAberto" (click)="fecharModal()">
+  <div class="modal-config" (click)="$event.stopPropagation()">
+
+    <button class="modal-fechar" (click)="fecharModal()">✕</button>
+
+    <div class="modal-abas">
+      <button
+        class="modal-aba-btn"
+        [class.ativa]="abaModalAtiva === 'dados'"
+        (click)="trocarAbaModal('dados')">
+        👤 Dados
+      </button>
+      <button
+        class="modal-aba-btn"
+        [class.ativa]="abaModalAtiva === 'senha'"
+        (click)="trocarAbaModal('senha')">
+        🔒 Segurança
+      </button>
+    </div>
+
+    <!-- ABA DADOS -->
+    <div class="modal-conteudo" *ngIf="abaModalAtiva === 'dados'">
+      <form [formGroup]="perfilForm" (ngSubmit)="salvarDados()">
+        <div class="form-group">
+          <label for="nome">Nome Completo</label>
+          <input id="nome" type="text" formControlName="nome" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mail (Login)</label>
+         <input id="email" type="email" formControlName="email" class="form-control" />
+        </div>
+
+        <p class="erro" *ngIf="mensagemErro">{{ mensagemErro }}</p>
+        <p class="mensagem-sucesso" *ngIf="mensagemSucesso">{{ mensagemSucesso }}</p>
+
+        <button type="submit" [disabled]="perfilForm.invalid" class="btn-principal">Salvar Alterações</button>
+      </form>
+    </div>
+
+    <!-- ABA SEGURANÇA -->
+    <div class="modal-conteudo" *ngIf="abaModalAtiva === 'senha'">
+      <form [formGroup]="senhaForm" (ngSubmit)="alterarSenha()">
+        <div class="form-group">
+  <label for="senhaAtual">Senha Atual</label>
+  <div class="campo-senha">
+    <input
+      id="senhaAtual"
+      [type]="mostrarSenhaAtual ? 'text' : 'password'"
+      formControlName="senhaAtual"
+      class="form-control" />
+    <span class="icone-olho" (click)="alternarSenhaAtual()">{{ mostrarSenhaAtual ? '🙈' : '👁️' }}</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="novaSenha">Nova Senha</label>
+  <div class="campo-senha">
+    <input
+      id="novaSenha"
+      [type]="mostrarNovaSenha ? 'text' : 'password'"
+      formControlName="novaSenha"
+      class="form-control" />
+    <span class="icone-olho" (click)="alternarNovaSenha()">{{ mostrarNovaSenha ? '🙈' : '👁️' }}</span>
+  </div>
+  <p class="dica-senha">A senha pode ser letra, número ou uma combinação dos dois.</p>
+</div>
+
+<div class="form-group">
+  <label for="confirmarNovaSenha">Confirmar Nova Senha</label>
+  <div class="campo-senha">
+    <input
+      id="confirmarNovaSenha"
+      [type]="mostrarConfirmarSenha ? 'text' : 'password'"
+      formControlName="confirmarNovaSenha"
+      class="form-control" />
+    <span class="icone-olho" (click)="alternarConfirmarSenha()">{{ mostrarConfirmarSenha ? '🙈' : '👁️' }}</span>
+  </div>
+</div>
+        <p class="erro" *ngIf="mensagemSenhaErro">{{ mensagemSenhaErro }}</p>
+        <p class="mensagem-sucesso" *ngIf="mensagemSenhaSucesso">{{ mensagemSenhaSucesso }}</p>
+
+        <button type="submit" [disabled]="senhaForm.invalid" class="btn-principal">Alterar Senha</button>
+      </form>
+    </div>
+
+  </div>
+</div>

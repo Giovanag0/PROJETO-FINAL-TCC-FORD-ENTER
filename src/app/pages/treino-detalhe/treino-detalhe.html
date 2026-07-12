@@ -1,0 +1,65 @@
+<div class="detalhe-container" *ngIf="treino">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <img src="imgs/Logo_Academia.png" alt="Logo" class="logo-navbar" />
+    <ul class="nav-links">
+      <li (click)="navegarPara('/home')">Home</li>
+      <li (click)="navegarPara('/treinos')">Treinos</li>
+      <li (click)="navegarPara('/planos')">Planos</li>
+      <li (click)="navegarPara('/contato')">Contato</li>
+      <li (click)="navegarPara('/perfil')">Perfil</li>
+      <li class="sair" (click)="navegarPara('/login')">Sair</li>
+    </ul>
+  </nav>
+
+  <!-- CABEÇALHO DO TREINO -->
+  <div class="cabecalho-detalhe">
+    <button class="voltar-btn" (click)="voltar()">&#10094; Voltar</button>
+    <span class="emoji-grande">{{ treino.emoji }}</span>
+    <h1>{{ treino.nome }}</h1>
+    <p class="categoria-badge">{{ treino.categoria }}</p>
+    <p class="aviso-remoto">
+      📹 Treino planejado pelo seu profissional. Assista às fotos e vídeos de execução caso esteja treinando fora da academia.
+    </p>
+  </div>
+
+  <!-- ABAS DE NÍVEL -->
+  <div class="abas-nivel">
+    <button
+      *ngFor="let nivel of niveis"
+      class="aba-btn"
+      [class.ativa]="nivelAtivo === nivel"
+      (click)="selecionarNivel(nivel)">
+      {{ nivel }}
+    </button>
+  </div>
+
+  <!-- LISTA DE EXERCÍCIOS DO NÍVEL, AGRUPADA POR TREINO A/B/C/D -->
+  <div class="grupo-treino" *ngFor="let grupo of exerciciosAgrupados()">
+    <h2 class="grupo-titulo" *ngIf="grupo.grupo">{{ grupo.grupo }}</h2>
+    <div class="exercicios-grid">
+      <div class="exercicio-card" *ngFor="let exercicio of grupo.exercicios">
+        <div class="exercicio-midia">
+          <img [src]="exercicio.imagem" [alt]="exercicio.nome" />
+          <div class="midia-overlay" *ngIf="exercicio.video" (click)="abrirVideo(exercicio.video)">
+            <span>▶ Ver vídeo</span>
+          </div>
+          <div class="midia-overlay midia-pendente" *ngIf="!exercicio.video">
+            <span>🎥 Vídeo em breve</span>
+          </div>
+        </div>
+        <div class="exercicio-info">
+          <h3>{{ exercicio.nome }}</h3>
+          <p>{{ exercicio.descricao }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="nao-encontrado" *ngIf="!treino">
+  <p>Treino não encontrado.</p>
+  <button (click)="voltar()">Voltar para Treinos</button>
+</div>
