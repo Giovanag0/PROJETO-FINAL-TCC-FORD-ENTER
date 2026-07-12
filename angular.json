@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "corpo-em-movimento": {
+    "gusmao-fitness": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -56,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "corpo-em-movimento:build:production"
+              "buildTarget": "gusmao-fitness:build:production"
             },
             "development": {
-              "buildTarget": "corpo-em-movimento:build:development"
+              "buildTarget": "gusmao-fitness:build:development"
             }
           },
           "defaultConfiguration": "development"
