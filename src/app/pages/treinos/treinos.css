@@ -90,7 +90,7 @@
   flex-wrap: wrap;
   gap: 14px;
   padding: 20px 20px 40px;
-  background: #0a0a1a;
+  background: #bcbcfc;
   position: relative;
   z-index: 1;
 }
@@ -136,7 +136,7 @@
   background:
     radial-gradient(circle at 15% 20%, rgba(0, 102, 255, 0.08), transparent 40%),
     radial-gradient(circle at 85% 80%, rgba(0, 102, 255, 0.08), transparent 40%),
-    #000;
+    #e5e5fa;
   padding: 30px 60px 70px;
 }
 
@@ -159,12 +159,12 @@
 
 .trilho-wrapper::before {
   left: 0;
-  background: linear-gradient(90deg, #000 0%, transparent 100%);
+  background: linear-gradient(90deg, #e5e5fa 0%, transparent 100%);
 }
 
 .trilho-wrapper::after {
   right: 0;
-  background: linear-gradient(270deg, #000 0%, transparent 100%);
+  background: linear-gradient(270deg, #e5e5fa 0%, transparent 100%);
 }
 
 .trilho {

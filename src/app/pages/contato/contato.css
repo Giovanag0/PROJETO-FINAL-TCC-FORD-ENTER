@@ -90,7 +90,7 @@
   flex-wrap: wrap;
   gap: 24px;
   padding: 50px 40px;
-  background: #0a0a1a;
+  background: #e5e5fa;
 }
 
 .canal-card {
@@ -141,7 +141,7 @@
   background:
     radial-gradient(circle at 15% 20%, rgba(0, 102, 255, 0.08), transparent 40%),
     radial-gradient(circle at 85% 80%, rgba(0, 102, 255, 0.08), transparent 40%),
-    #000;
+    #e5e5fa;
 }
 
 .formulario-box,

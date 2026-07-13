@@ -2,7 +2,8 @@
 
   <!-- NAVBAR -->
   <nav class="navbar">
-    <img src="imgs/Logo_Academia.png" alt="Logo" class="logo-navbar" />
+    <img src="imgs/Logo_Academia.png" alt="Logo" class="logo-navbar logo-escura" />
+    <img src="imgs/_Logo_Academia-claro.png" alt="Logo" class="logo-navbar logo-clara" />
     <ul class="nav-links">
       <li (click)="navegarPara('/home')">Home</li>
       <li (click)="navegarPara('/treinos')">Treinos</li>
@@ -35,7 +36,7 @@
     </button>
   </div>
 
-  <!-- LISTA DE EXERCÍCIOS DO NÍVEL, AGRUPADA POR TREINO A/B/C/D -->
+  <!-- LISTA DE EXERCÍCIOS DO NÍVEL, AGRUPADA POR TREINO A/B/C/D
   <div class="grupo-treino" *ngFor="let grupo of exerciciosAgrupados()">
     <h2 class="grupo-titulo" *ngIf="grupo.grupo">{{ grupo.grupo }}</h2>
     <div class="exercicios-grid">
@@ -57,7 +58,7 @@
     </div>
   </div>
 
-</div>
+</div> -->
 
 <div class="nao-encontrado" *ngIf="!treino">
   <p>Treino não encontrado.</p>

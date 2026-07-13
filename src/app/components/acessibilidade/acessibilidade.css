@@ -103,41 +103,7 @@
   color: #fff;
   font-weight: bold;
 }
-body.modo-claro {
-  background: #f0f0f0 !important;
-  color: #000 !important;
-}
 
-body.modo-claro nav,
-body.modo-claro .navbar {
-  background: #e0e0e0 !important;
-  border-color: #0066ff !important;
-}
-
-body.modo-claro .login-box,
-body.modo-claro .card,
-body.modo-claro .plano-card,
-body.modo-claro .painel-acessibilidade {
-  background: #ffffff !important;
-  color: #000 !important;
-  border-color: #0066ff !important;
-}
-
-body.modo-claro h1,
-body.modo-claro h2,
-body.modo-claro h3,
-body.modo-claro p,
-body.modo-claro li,
-body.modo-claro label {
-  color: #000 !important;
-}
-
-body.modo-claro .home-container,
-body.modo-claro .treinos-container,
-body.modo-claro .planos-container,
-body.modo-claro .contato-container {
-  background: #f0f0f0 !important;
-}
 
 /* ========== RESPONSIVIDADE ========== */
 

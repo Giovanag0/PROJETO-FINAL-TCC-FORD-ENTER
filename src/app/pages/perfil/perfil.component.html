@@ -2,7 +2,8 @@
 
   <!-- NAVBAR -->
   <nav class="navbar">
-    <img src="imgs/Logo_Academia.png" alt="Logo" class="logo-navbar" />
+    <img src="imgs/Logo_Academia.png" alt="Logo" class="logo-navbar logo-escura" />
+    <img src="imgs/_Logo_Academia-claro-transparente.png" alt="Logo" class="logo-navbar logo-clara" />
     <ul class="nav-links">
       <li (click)="navegarPara('/home')">Home</li>
       <li (click)="navegarPara('/treinos')">Treinos</li>
@@ -164,7 +165,7 @@
 
 </div>
 
-<!-- MODAL DE CONFIGURAÇÕES -->
+<!--  CONFIGURAÇÕES -->
 <div class="modal-overlay" *ngIf="modalAberto" (click)="fecharModal()">
   <div class="modal-config" (click)="$event.stopPropagation()">
 

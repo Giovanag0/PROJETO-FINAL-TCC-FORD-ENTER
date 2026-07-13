@@ -1,7 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-/* ===== ACESSIBILIDADE (afeta a aplicação inteira, qualquer página) ===== */
 
-/* Alto contraste: preto puro + destaque em amarelo para máxima legibilidade */
 body.alto-contraste {
   filter: contrast(1.35) saturate(1.1);
 }
@@ -11,7 +8,6 @@ body.alto-contraste a {
   outline: 1px solid #ffcc00;
 }
 
-/* Pausar animações: remove qualquer animação/transição CSS da aplicação */
 body.sem-animacoes,
 body.sem-animacoes *,
 body.sem-animacoes *::before,
@@ -336,4 +332,17 @@ body.modo-claro .foto-card {
 body.modo-claro .foto-card p {
   color: #000 !important;
   background: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Alterna qual logo aparece dependendo do tema */
+.logo-clara {
+  display: none;
+}
+
+body.modo-claro .logo-clara {
+  display: block;
+}
+
+body.modo-claro .logo-escura {
+  display: none;
 }
