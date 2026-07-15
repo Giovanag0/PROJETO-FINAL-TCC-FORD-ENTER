@@ -34,21 +34,21 @@ export class PerfilComponent implements OnInit {
   modalAberto = false;
   abaModalAtiva: 'dados' | 'senha' = 'dados';
 
-mostrarSenhaAtual = false;
-mostrarNovaSenha = false;
-mostrarConfirmarSenha = false;
+  mostrarSenhaAtual = false;
+  mostrarNovaSenha = false;
+  mostrarConfirmarSenha = false;
 
-alternarSenhaAtual(): void {
-  this.mostrarSenhaAtual = !this.mostrarSenhaAtual;
-}
+  alternarSenhaAtual(): void {
+    this.mostrarSenhaAtual = !this.mostrarSenhaAtual;
+  }
 
-alternarNovaSenha(): void {
-  this.mostrarNovaSenha = !this.mostrarNovaSenha;
-}
+  alternarNovaSenha(): void {
+    this.mostrarNovaSenha = !this.mostrarNovaSenha;
+  }
 
-alternarConfirmarSenha(): void {
-  this.mostrarConfirmarSenha = !this.mostrarConfirmarSenha;
-}
+  alternarConfirmarSenha(): void {
+    this.mostrarConfirmarSenha = !this.mostrarConfirmarSenha;
+  }
 
   // ===== ÁREA DO ALUNO =====
   treinosDisponiveis: Treino[] = [];
@@ -75,13 +75,13 @@ alternarConfirmarSenha(): void {
     this.usuarioLogado = this.authService.usuarioAtual();
 
     this.perfilForm = this.fb.group({
-  nome: [this.usuarioLogado?.nome || '', [Validators.required]],
-  email: [this.usuarioLogado?.email || '', [Validators.required, Validators.email]]
-});
+      nome: [this.usuarioLogado?.nome || '', [Validators.required]],
+      email: [this.usuarioLogado?.email || '', [Validators.required, Validators.email]]
+    });
 
     this.senhaForm = this.fb.group({
       senhaAtual: ['', [Validators.required]],
-     novaSenha: ['', [Validators.required, Validators.minLength(6)]],
+      novaSenha: ['', [Validators.required, Validators.minLength(6)]],
       confirmarNovaSenha: ['', [Validators.required]]
     }, {
       validators: this.checarSenhas
@@ -132,15 +132,24 @@ alternarConfirmarSenha(): void {
     this.mensagemErro = '';
 
     if (this.perfilForm.invalid) {
-      this.mensagemErro = 'Preencha o nome corretamente.';
+      this.mensagemErro = 'Preencha o nome e um e-mail válido.';
       return;
     }
 
     const novoNome = this.perfilForm.get('nome')?.value;
+    const novoEmail = this.perfilForm.get('email')?.value;
+
     this.authService.atualizarNome(novoNome);
+    const resultadoEmail = this.authService.atualizarEmail(novoEmail);
+
+    if (resultadoEmail === 'email-em-uso') {
+      this.mensagemErro = 'Esse e-mail já está em uso por outra conta.';
+      return;
+    }
 
     if (this.usuarioLogado) {
       this.usuarioLogado.nome = novoNome;
+      this.usuarioLogado.email = novoEmail;
     }
 
     this.mensagemSucesso = 'Dados atualizados com sucesso!';
@@ -152,9 +161,9 @@ alternarConfirmarSenha(): void {
 
     if (this.senhaForm.invalid) {
       if (this.senhaForm.errors?.['naoCoincide']) {
-        this.mensagemSenhaErro = this.mensagemSenhaErro = 'A nova senha precisa ter pelo menos 6 caracteres.';
+        this.mensagemSenhaErro = 'A nova senha precisa ter pelo menos 6 caracteres.';
       } else {
-        this.mensagemSenhaErro = this.mensagemSenhaErro = 'A nova senha precisa ter pelo menos 6 caracteres, com letras e números.';
+        this.mensagemSenhaErro = 'A nova senha precisa ter pelo menos 6 caracteres, com letras e números.';
       }
       return;
     }
