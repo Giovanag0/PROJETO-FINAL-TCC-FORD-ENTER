@@ -17,7 +17,7 @@ body.sem-animacoes *::after {
 }
 
 body.modo-claro {
-  background: #f0f0f0 !important;
+  background: #e5e5fa !important;
   color: #000 !important;
   filter: invert(0);
 }
@@ -28,8 +28,9 @@ body.modo-claro .planos-container,
 body.modo-claro .contato-container,
 body.modo-claro .login-container,
 body.modo-claro .perfil-container,
-body.modo-claro .sobre-container {
-  background: #f0f0f0 !important;
+body.modo-claro .sobre-container,
+body.modo-claro .pagamento-container {
+  background: #e5e5fa !important;
 }
 
 body.modo-claro .navbar {
@@ -47,7 +48,8 @@ body.modo-claro .login-box,
 body.modo-claro .canal-card,
 body.modo-claro .formulario-box,
 body.modo-claro .mapa-box,
-body.modo-claro .perfil-box {
+body.modo-claro .perfil-box,
+body.modo-claro .pagamento-box {
   background: #ffffff !important;
   color: #000 !important;
 }
@@ -142,7 +144,7 @@ body.modo-claro .cabecalho {
 }
 
 body.modo-claro .conteudo {
-  background: #f0f0f0 !important;
+  background: #e5e5fa !important;
 }
 
 body.modo-claro .card-perfil {
@@ -199,7 +201,7 @@ body.modo-claro .btn-config {
 }
 
 body.modo-claro .item-exercicio {
-  background: #f0f0f0 !important;
+  background: #e5e5fa !important;
   color: #000 !important;
 }
 
@@ -208,11 +210,11 @@ body.modo-claro .checkbox-exercicio span:last-child {
 }
 
 body.modo-claro .secao-conquistas {
-  background: #f0f0f0 !important;
+  background: #e5e5fa !important;
 }
 
 body.modo-claro .secao-aluno {
-  background: #f0f0f0 !important;
+  background: #e5e5fa !important;
 }
 
 body.modo-claro .dia-calendario {
@@ -322,7 +324,7 @@ body.modo-claro .cta p {
 }
 
 body.modo-claro .galeria {
-  background: #f0f0f0 !important;
+  background: #e5e5fa !important;
 }
 
 body.modo-claro .foto-card {
@@ -334,7 +336,6 @@ body.modo-claro .foto-card p {
   background: rgba(255, 255, 255, 0.9) !important;
 }
 
-/* Alterna qual logo aparece dependendo do tema */
 .logo-clara {
   display: none;
 }
