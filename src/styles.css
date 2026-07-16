@@ -1,4 +1,3 @@
-
 body.alto-contraste {
   filter: contrast(1.35) saturate(1.1);
 }
@@ -49,7 +48,8 @@ body.modo-claro .canal-card,
 body.modo-claro .formulario-box,
 body.modo-claro .mapa-box,
 body.modo-claro .perfil-box,
-body.modo-claro .pagamento-box {
+body.modo-claro .pagamento-box,
+body.modo-claro .sucesso-box {
   background: #ffffff !important;
   color: #000 !important;
 }
