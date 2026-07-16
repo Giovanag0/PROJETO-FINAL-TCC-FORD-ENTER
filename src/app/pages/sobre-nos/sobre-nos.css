@@ -12,7 +12,6 @@
   overflow-x: hidden;
 }
 
-/* ===== ANIMAÇÃO DE REVELAÇÃO AO ROLAR ===== */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
@@ -130,7 +129,6 @@
   text-align: center;
 }
 
-/* ===== CHAMADA FINAL ===== */
 .cta {
   text-align: center;
   padding: 60px 24px 90px;
