@@ -36,29 +36,6 @@
     </button>
   </div>
 
-  <!-- LISTA DE EXERCÍCIOS DO NÍVEL, AGRUPADA POR TREINO A/B/C/D
-  <div class="grupo-treino" *ngFor="let grupo of exerciciosAgrupados()">
-    <h2 class="grupo-titulo" *ngIf="grupo.grupo">{{ grupo.grupo }}</h2>
-    <div class="exercicios-grid">
-      <div class="exercicio-card" *ngFor="let exercicio of grupo.exercicios">
-        <div class="exercicio-midia">
-          <img [src]="exercicio.imagem" [alt]="exercicio.nome" />
-          <div class="midia-overlay" *ngIf="exercicio.video" (click)="abrirVideo(exercicio.video)">
-            <span>▶ Ver vídeo</span>
-          </div>
-          <div class="midia-overlay midia-pendente" *ngIf="!exercicio.video">
-            <span>🎥 Vídeo em breve</span>
-          </div>
-        </div>
-        <div class="exercicio-info">
-          <h3>{{ exercicio.nome }}</h3>
-          <p>{{ exercicio.descricao }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div> -->
 
 <div class="nao-encontrado" *ngIf="!treino">
   <p>Treino não encontrado.</p>
