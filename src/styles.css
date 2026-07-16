@@ -32,7 +32,8 @@ body.modo-claro .pagamento-container {
   background: #e5e5fa !important;
 }
 
-body.modo-claro .navbar {
+body.modo-claro .navbar,
+body.modo-claro .topbar {
   background: #6a83b9 !important;
 }
 
