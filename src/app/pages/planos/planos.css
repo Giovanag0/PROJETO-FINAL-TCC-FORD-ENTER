@@ -116,17 +116,6 @@
   border-color: #66ccff;
 }
 
-/* .plano-card.destaque {
-  background: linear-gradient(160deg, rgba(0, 102, 255, 0.18), #0d0d1a 60%);
-  border-color: #66ccff;
-  transform: scale(1.05);
-  box-shadow: 0 12px 34px rgba(0, 102, 255, 0.4);
-} */
-
-/* .plano-card.destaque:hover {
-  transform: scale(1.05) translateY(-8px);
-} */
-
 .plano-badge {
   position: absolute;
   top: -14px;
